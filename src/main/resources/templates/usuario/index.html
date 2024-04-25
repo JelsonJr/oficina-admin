@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head th:insert="~{fragments/header}">
+    <title>Title</title>
+</head>
+<body class="bg-gray-400 dark:bg-cinza">
+<header>
+    <nav th:replace="fragments/navbar :: navbar"></nav>
+</header>
+<main class="p-8">
+    <h2 th:if="${cadastroSuccess}" th:text="${cadastroSuccess}" class="text-center font-bold text-green-800 dark:text-green-600 text-lg my-4"></h2>
+    <a
+            type="button"
+            th:href="@{/usuario/cadastro}"
+            class="text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
+    >
+        Novo usuário
+    </a>
+    <div class="mt-10 relative overflow-x-auto">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Nome do usuário
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Email
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Telefone
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Veículos
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" th:each="usuario : ${usuarios}">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    th:text="${usuario.nome}">
+                </th>
+                <td class="px-6 py-4" th:text="${usuario.email}">
+                </td>
+                <td class="px-6 py-4" th:if="${!usuario.telefone.isBlank()}" th:text="${usuario.telefone}">
+                    Telefone: <span th:text="${usuario.telefone}"></span>
+                </td>
+                <td class="px-6 py-4" th:unless="${!usuario.telefone.isBlank()}">
+                    Sem telefone registrado
+                <td class="px-6 py-4">
+                    <p th:each="veiculo : ${usuario.veiculos}">
+                        <span th:text="${veiculo.modelo}"></span> - <span th:text="${veiculo.placa}"></span>
+                    </p>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<script th:src="@{/js/navbar.js}"></script>
+</body>
+</html>

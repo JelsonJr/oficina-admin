@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="~{fragments/header}">
+    <title>Title</title>
+</head>
+<body class="bg-gray-400 dark:bg-cinza">
+<header>
+    <nav th:replace="fragments/navbar :: navbar"></nav>
+</header>
+<main class="flex items-center justify-center h-screen">
+    <section class="my-auto mx-auto w-full max-w-xl">
+        <h1 class="text-center text-xl text-branco my-4">
+            Insira as informações para cadastrar um novo veículo
+        </h1>
+        <div th:if="${erroDeCadastro}" class="bg-red-100 mb-4 rounded-lg p-0.5 mx-auto max-w-sm">
+            <h3 th:text="${erroDeCadastro}" class="text-red-600 text-xl my-4 text-center"></h3>
+        </div>
+        <form class="bg-branco shadow-md rounded px-8 pt-6 pb-8 mb-4 dark:bg-cinza" th:object="${dadosCadastroVeiculo}"
+              th:action="@{/veiculo/cadastro}" method="post">
+            <div class="relative z-0 w-full mb-5 group">
+                <h2 class="text-center text-xl text-cinza dark:text-branco">Informações do veículo</h2>
+            </div>
+            <div class="relative z-0 w-full mb-5 group">
+                <label for="usuarioId" class="absolute top-0 left-0 text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">
+                    Placa do veículo
+                </label>
+                <select name="usuarioId" id="usuarioId" class="block py-2.5 px-0 w-full text-sm bg-branco dark:bg-cinza border-0 border-b-2 appearance-none text-gray-500 dark:text-white border-gray-400 dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 peer" required>
+                    <option value="">Selecione um usuário</option>
+                    <th:block th:each="usuario : ${usuarios}">
+                        <option th:value="${usuario.id}" th:text="${usuario.nome} + ' - ' + ${usuario.cpf}"></option>
+                    </th:block>
+                </select>
+            </div>
+            <div class="relative z-0 w-full mb-5 group">
+                <input
+                        type="text"
+                        name="placa"
+                        id="placa"
+                        class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none text-gray-500 dark:text-white border-gray-400 dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" "
+                        th:field="*{placa}"
+                        required
+                />
+                <label
+                        for="placa"
+                        class="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                >
+                    Placa do veículo
+                </label>
+                <span th:if="${#fields.hasErrors('placa')}" th:errors="*{placa}" class="text-red-600 text-sm"></span>
+            </div>
+            <div class="relative z-0 w-full mb-5 group">
+                <input
+                        type="text"
+                        name="modelo"
+                        id="modelo"
+                        class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none text-gray-500 dark:text-white border-gray-400 dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" "
+                        th:field="*{modelo}"
+                        required
+                />
+                <label
+                        for="modelo"
+                        class="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                >
+                    Modelo do veículo
+                </label>
+                <span th:if="${#fields.hasErrors('modelo')}" th:errors="*{modelo}" class="text-red-600 text-sm"></span>
+            </div>
+            <div class="relative z-0 w-full mb-5 group">
+                <input
+                        type="number"
+                        min="1885"
+                        max="2024"
+                        maxlength="4"
+                        pattern="\d{4}"
+                        name="ano"
+                        id="ano"
+                        class="block py-2.5 px-0 w-full text-sm bg-transparent border-0 border-b-2 appearance-none text-gray-500 dark:text-white border-gray-400 dark:border-gray-600 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                        placeholder=" "
+                        th:field="*{ano}"
+                        required
+                />
+                <label
+                        for="ano"
+                        class="peer-focus:font-medium absolute text-sm text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:start-0 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto peer-focus:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                >
+                    Ano do modelo
+                </label>
+                <span th:if="${#fields.hasErrors('ano')}" th:errors="*{ano}" class="text-red-600 text-sm"></span>
+            </div>
+
+            <div class="flex justify-between items-center gap-5">
+                <a
+                        type="button"
+                        th:href="@{/}"
+                        class="text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-red-600 hover:bg-red-700 focus:ring-red-800"
+                >
+                    Retornar
+                </a>
+                <button
+                        type="submit"
+                        class="text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
+                >
+                    Cadastrar
+                </button>
+            </div>
+        </form>
+    </section>
+</main>
+<script th:src="@{/js/navbar.js}"></script>
+</body>
+</html>

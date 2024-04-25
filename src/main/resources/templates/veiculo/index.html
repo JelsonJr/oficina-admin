@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head th:insert="~{fragments/header}">
+    <title>Title</title>
+</head>
+<body class="bg-gray-400 dark:bg-cinza">
+<header>
+    <nav th:replace="fragments/navbar :: navbar"></nav>
+</header>
+<main class="p-8">
+    <h2 th:if="${cadastroSuccess}" th:text="${cadastroSuccess}" class="text-center font-bold text-green-800 dark:text-green-600 text-lg my-4"></h2>
+    <a
+            type="button"
+            th:href="@{/veiculo/cadastro}"
+            class="text-white focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center bg-blue-600 hover:bg-blue-700 focus:ring-blue-800"
+    >
+        Novo veículo
+    </a>
+    <div class="mt-10 relative overflow-x-auto">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    Modelo
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Proprietário
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Placa
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    Ano
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700" th:each="veiculo : ${veiculos}">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    th:text="${veiculo.modelo}">
+                </th>
+                <td class="px-6 py-4" th:text="${veiculo.proprietario.nome}">
+                </td>
+                <td class="px-6 py-4" th:text="${veiculo.placa}">
+                </td>
+                <td class="px-6 py-4" th:text="${veiculo.ano}">
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</main>
+<script th:src="@{/js/navbar.js}"></script>
+</body>
+</html>

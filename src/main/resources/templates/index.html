@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="~{fragments/header}">
+    <title>Title</title>
+</head>
+<body class="bg-gray-400 dark:bg-cinza">
+<header>
+    <nav th:replace="fragments/navbar :: navbar(usuario=${logado})"></nav>
+</header>
+<main class="p-8"></main>
+<script th:src="@{/js/navbar.js}"></script>
+</body>
+</html>
