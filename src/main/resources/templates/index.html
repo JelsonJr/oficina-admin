@@ -7,7 +7,68 @@
 <header>
     <nav th:replace="fragments/navbar :: navbar(usuario=${logado})"></nav>
 </header>
-<main class="p-8"></main>
+<main class="p-8">
+    <h2 class="font-bold text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl text-dourado mb-10 mx-auto text-center">
+        Nossos valores
+    </h2>
+    <div class="grid grid-cols-12 gap-4 p-8 my-auto">
+        <div class="text-gray-500 col-span-12 sm:mx-auto md:col-span-6 lg:col-span-4 my-3 block max-w-sm p-6 border rounded-lg shadow-xl transition duration-500 ease-in-out bg-cinza dark:bg-preto hover:shadow-none hover:text-white">
+            <h3 class="mb-2 text-2xl font-bold tracking-tight text-amarelo">
+                Custo benefício
+            </h3>
+            <p class="font-normal">
+                Nossos preços são montados em conjunto com o cliente, analisando mão
+                de obra e peças selecionadas, nossa oficina oferece o melhor para o
+                seu bolso!
+            </p>
+        </div>
+        <div class="text-gray-500 col-span-12 sm:mx-auto md:col-span-6 lg:col-span-4 my-3 block max-w-sm p-6 border rounded-lg shadow-xl transition duration-500 ease-in-out bg-cinza dark:bg-preto hover:shadow-none hover:text-white">
+            <h3 class="mb-2 text-2xl font-bold tracking-tight text-amarelo">
+                Desconto fidelidade
+            </h3>
+            <p class="font-normal">
+                Ao se cadastrar na nossa oficina você passa a acumular descontos e
+                promoções para utilizar quando quiser!
+            </p>
+        </div>
+        <div class="text-gray-500 col-span-12 sm:mx-auto md:col-span-6 lg:col-span-4 my-3 block max-w-sm p-6 border rounded-lg shadow-xl transition duration-500 ease-in-out bg-cinza dark:bg-preto hover:shadow-none hover:text-white">
+            <h3 class="mb-2 text-2xl font-bold tracking-tight text-amarelo">
+                Agendamento
+            </h3>
+            <p class="font-normal">
+                Nossa oficina oferece agendamento online para revisão, manutenção e
+                conserto! Basta se cadastrar e agendar o seu horário!
+            </p>
+        </div>
+        <div class="text-gray-500 col-span-12 sm:mx-auto md:col-span-6 lg:col-span-4 my-3 block max-w-sm p-6 border rounded-lg shadow-xl transition duration-500 ease-in-out bg-cinza dark:bg-preto hover:shadow-none hover:text-white">
+            <h3 class="mb-2 text-2xl font-bold tracking-tight text-amarelo">
+                Mecânicos especializados no serviço
+            </h3>
+            <p class="font-normal">
+                Nossos mecânicos são preparados e especializados para atacar e
+                solucionar de forma eficiente o seu problema!
+            </p>
+        </div>
+        <div class="text-gray-500 col-span-12 sm:mx-auto md:col-span-6 lg:col-span-4 my-3 block max-w-sm p-6 border rounded-lg shadow-xl transition duration-500 ease-in-out bg-cinza dark:bg-preto hover:shadow-none hover:text-white">
+            <h3 class="mb-2 text-2xl font-bold tracking-tight text-amarelo">
+                Cashback
+            </h3>
+            <p class="font-normal">
+                Ao realizar o pagamento com nossos parceiros, você recebe um
+                cashback de até 5%!
+            </p>
+        </div>
+        <div class="text-gray-500 col-span-12 sm:mx-auto md:col-span-6 lg:col-span-4 my-3 block max-w-sm p-6 border rounded-lg shadow-xl transition duration-500 ease-in-out bg-cinza dark:bg-preto hover:shadow-none hover:text-white">
+            <h3 class="mb-2 text-2xl font-bold tracking-tight text-amarelo">
+                Manutenção de carros elétricos
+            </h3>
+            <p class="font-normal">
+                Oferecemos suporte para carros elétricos, com mão de obra
+                especializada e capacitada para atender o seu veículo!
+            </p>
+        </div>
+    </div>
+</main>
 <script th:src="@{/js/navbar.js}"></script>
 </body>
 </html>
